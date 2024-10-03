@@ -33,8 +33,17 @@ st.title("Tomato leaves Pest Detection")
 st.image("banner.jpeg", use_column_width=True, caption="Tomato leaves disease")
 
 st.subheader(" Disease Model Detection Capabilities")
-for class_id, class_name in class_names.items():
-    st.write(f"{class_id}: {class_name}")
+# Calculate number of columns
+num_cols = 2
+col_width = len(class_names) // num_cols
+
+# Create columns
+cols = st.columns(num_cols)
+
+# Display detection capabilities in columns
+for i, (class_id, class_name) in enumerate(class_names.items()):
+    with cols[i % num_cols]:
+        st.write(f"{class_id}: {class_name}")
     
 st.subheader("Upload an image")
 
