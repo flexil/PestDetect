@@ -23,10 +23,10 @@ if st.button("Run Inference"):
         st.subheader("Detection Results")
         for i, r in enumerate(results):
             im_bgr = r.plot()
-            im_rgb = Image.fromarray(im_bgr[..., ::-1])
+             im_rgb = Image.fromarray(im_bgr[..., ::-1])
             st.image(im_rgb, caption=f"Detection {i+1}")
-            class_id = int(r.classes[0])  # Access class ID
+            class_id = int(r.boxes.xyxy[0][4])  # Get class ID
             class_name = results.names[class_id]
-            st.write(f"Class: {class_name}")
+            st.write(f"Class: {class_name}, Confidence: {r.boxes.xyxy[0][5]:.2f}")
     else:
         st.write("Please upload an image")
