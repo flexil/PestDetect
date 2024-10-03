@@ -29,11 +29,12 @@ class_names = {
 
 
 st.title("Pest Detection Model")
-st.subheader("Upload an image")
 
 st.subheader("Model Detection Capabilities")
 for class_id, class_name in class_names.items():
     st.write(f"{class_id}: {class_name}")
+    
+st.subheader("Upload an image")
 
 uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png", "webp"])
 confidence_threshold = st.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5)
