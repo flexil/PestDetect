@@ -45,7 +45,7 @@ for i, (class_id, class_name) in enumerate(class_names.items()):
     with cols[i % num_cols]:
         st.write(f"{class_id}: {class_name}")
     
-st.subheader("Upload an image")
+st.subheader("Upload an image [look for image sample of tomato leaf disease on google and upload for inference]")
 
 uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png", "webp"])
 confidence_threshold = st.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5)
