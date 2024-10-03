@@ -14,9 +14,9 @@ def load_model(x):
         st.error(f"Model loading error: {e}")
         return None
 
-def process_image(image, model, confidence_threshold):
+def process_image(image_path, model, confidence_threshold):
     try:
-        results = model.predict(image, save=True, imgsz=640, conf=confidence_threshold)
+        results = model.predict(image_path, save=True, imgsz=640, conf=confidence_threshold)
         print(f"Results: {results}")
         return results
     except Exception as e:
@@ -26,35 +26,31 @@ def process_image(image, model, confidence_threshold):
 
 def main():
     st.title("Pest Detection Model")
-    st.subheader("Upload Media")
+    st.subheader("Upload Image")
 
-    media_type = st.selectbox("Select Media Type", ["Image", "Video"])
-    uploaded_file = st.file_uploader("Choose Media", type=["jpg", "jpeg", "png", "mp4"])
+    uploaded_file = st.file_uploader("Choose Image", type=["jpg", "jpeg", "png"])
     confidence_threshold = st.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5)
 
     if st.button("Run Inference"):
         if uploaded_file is not None:
-            model = load_model("best.pt")  
+            model = load_model("best.pt")  # Replace with actual model path
             if model is not None:
-                if media_type == "Image":
-                    image = Image.open(uploaded_file)
-                    image.save("temp.jpg")  # Save image to disk
-                    results = process_image("temp.jpg", model, confidence_threshold)
-                    if results is not None and len(results) > 0:
-                        st.subheader("Detection Results")
-                        for i, r in enumerate(results):
-                            im_bgr = r.plot()
-                            im_rgb = Image.fromarray(im_bgr[..., ::-1])
-                            st.image(im_rgb, caption=f"Detection {i+1}")
-                            st.write(r)
-                    else:
-                        st.error("No detections found")
-                elif media_type == "Video":
-                    # Video processing code
+                image_path = "temp.jpg"
+                image = Image.open(uploaded_file)
+                image.save(image_path)  # Save image to disk
+                results = process_image(image_path, model, confidence_threshold)
+                if results is not None and len(results) > 0:
+                    st.subheader("Detection Results")
+                    for i, r in enumerate(results):
+                        im_bgr = r.plot()
+                        im_rgb = Image.fromarray(im_bgr[..., ::-1])
+                        st.image(im_rgb, caption=f"Detection {i+1}")
+                        st.write(r)
+                else:
+                    st.error("No detections found")
             else:
                 st.error("Model loading failed")
         else:
-            st.write("Please upload media")
+            st.write("Please upload image")
 
 main()
-
