@@ -23,7 +23,7 @@ if st.button("Run Inference"):
         st.subheader("Detection Results")
         for i, r in enumerate(results):
             im_bgr = r.plot()
-             im_rgb = Image.fromarray(im_bgr[..., ::-1])
+            im_rgb = Image.fromarray(im_bgr[..., ::-1])
             st.image(im_rgb, caption=f"Detection {i+1}")
             class_id = int(r.boxes.xyxy[0][4])  # Get class ID
             class_name = results.names[class_id]
