@@ -3,4 +3,4 @@ ultralytics
 torch
 Pillow
 opencv-python
-apt-get install libgl1
+libgl1
