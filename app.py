@@ -7,11 +7,11 @@ import tempfile
 import time
 
 @st.cache(allow_output_mutation=True)
-def load_model():
-    model = YOLO("best.pt")
+def load_model(x):
+    model = YOLO(x)
     return model
 
-model = load_model()
+model = load_model("best.pt")
 
 st.title("Pest Detection Model")
 
