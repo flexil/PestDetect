@@ -1,3 +1,4 @@
+
 import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
@@ -45,7 +46,7 @@ def main():
                         im_bgr = r.plot()
                         im_rgb = Image.fromarray(im_bgr[..., ::-1])
                         st.image(im_rgb, caption=f"Detection {i+1}")
-                        st.write(r)
+                        st.write(f"Class: {r.name}, Confidence: {r.conf:.2f}")
                 else:
                     st.error("No detections found")
             else:
