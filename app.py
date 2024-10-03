@@ -1,14 +1,3 @@
-Yes, this code can run on Streamlit. However, consider the following adjustments:
-
-
-1. Remove the if __name__ == "__main__": block, as Streamlit doesn't require it.
-2. Use Streamlit's built-in caching mechanisms instead of the @st.cache decorator.
-3. Ensure the (link unavailable) in the load_model function is replaced with the actual path to your model file.
-
-
-Here's the updated code:
-
-
 
 import streamlit as st
 from ultralytics import YOLO
@@ -53,7 +42,7 @@ def main():
 
     if st.button("Run Inference"):
         if uploaded_file is not None:
-            model = load_model("(link unavailable)")  # Replace with actual model path
+            model = load_model("best.pt")  # Replace with actual model path
             if media_type == "Image":
                 image = Image.open(uploaded_file)
                 results = process_image(image, model, confidence_threshold)
