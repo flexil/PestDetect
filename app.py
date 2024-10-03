@@ -25,8 +25,8 @@ if st.button("Run Inference"):
             im_bgr = r.plot()
             im_rgb = Image.fromarray(im_bgr[..., ::-1])
             st.image(im_rgb, caption=f"Detection {i+1}")
-            class_id = r.boxes.xyxy[0][5].int().item()
-            class_name = results.names[int(class_id)]
+            class_id = int(r.classes[0])  # Access class ID
+            class_name = results.names[class_id]
             st.write(f"Class: {class_name}")
     else:
         st.write("Please upload an image")
