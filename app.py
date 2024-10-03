@@ -7,7 +7,7 @@ def load_model(x):
     model = YOLO(x)
     return model
 
-model = load_model('(link unavailable)')
+model = load_model('best.pt')
 
 st.title("Pest Detection Model")
 st.subheader("Upload an image")
