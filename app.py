@@ -14,11 +14,11 @@ def load_model(x):
         st.error(f"Model loading error: {e}")
 
 def process_image(image, model, confidence_threshold):
-    try:
-        results = model.predict(image, save=True, imgsz=640, conf=confidence_threshold)
-        return results
-    except Exception as e:
-        st.error(f"Image processing error: {e}")
+    results = model.predict(image, save=True, imgsz=640, conf=confidence_threshold)
+    if results is None or len(results) == 0:
+        st.error("No detections found")
+        return None
+    return results
 
 def process_video(video_file, model, confidence_threshold):
     cap = cv2.VideoCapture(video_file)
