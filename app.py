@@ -32,7 +32,7 @@ st.title("Tomato leaves Pest Detection")
 
 st.image("banner.jpeg", use_column_width=True, caption="Tomato leaves disease")
 
-st.subheader("Model Detection Capabilities")
+st.subheader(" Disease Model Detection Capabilities")
 for class_id, class_name in class_names.items():
     st.write(f"{class_id}: {class_name}")
     
