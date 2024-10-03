@@ -24,13 +24,15 @@ if st.button("Run Inference"):
         for i, r in enumerate(results):
             im_bgr = r.plot()
             im_rgb = Image.fromarray(im_bgr[..., ::-1])
-            st.image(im_rgb, caption="Detections")
+            st.image(im_rgb, caption=f"Detection {i+1}")
             
-            # Iterate over detections
-            for box in r.boxes:
-                x1, y1, x2, y2, confidence, class_id = box
-                class_name = model.names[int(class_id)]
-                st.write(f"Class ID: {class_id}, Class: {class_name}, Confidence: {confidence:.2f}")
+
+            for detection in r.boxes.xyxy:
+                x1, y1, x2, y2 = detection
                 st.write(f"Detection Box: ({x1}, {y1}, {x2}, {y2})")
+                
+  
+                class_name = f"Detection {i+1}"
+                st.write(f"Class: {class_name}")
     else:
         st.write("Please upload an image")
