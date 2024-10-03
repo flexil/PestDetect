@@ -30,7 +30,7 @@ class_names = {
 
 st.title("Tomato leaves Pest Detection")
 
-st.image("banner.jpeg", height=150, caption="Tomato leaves disease")
+st.image("banner.jpeg",  width=200, height=200, caption="Tomato leaves disease")
 
 st.subheader(" Disease Model Detection Capabilities")
 # Calculate number of columns
