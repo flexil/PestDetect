@@ -29,6 +29,7 @@ class_names = {
 
 
 st.title("Tomato leaves Pest Detection")
+@maxtekai
 
 st.image("banner.jpeg", caption="Tomato leaves disease")
 
