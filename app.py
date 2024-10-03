@@ -2,7 +2,7 @@ import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data(ttl=250)  # Cache for 1 hour
 def load_model(x):
     model = YOLO(x)
     return model
