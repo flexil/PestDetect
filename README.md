@@ -1,4 +1,4 @@
-# AI-Powered Pest Detection Application
+# AI-Powered Tomato Pest Detection Application
 
 
 # Overview
