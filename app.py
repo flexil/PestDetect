@@ -28,7 +28,7 @@ class_names = {
 }
 
 
-st.title("Pest Detection Model")
+st.title("Tomato leaves Pest Detection")
 
 st.image("banner.jpeg", use_column_width=True, caption="Tomato leaves disease")
 
