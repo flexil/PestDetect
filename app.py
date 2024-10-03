@@ -19,7 +19,7 @@ confidence_threshold = st.slider("Confidence Threshold", min_value=0.0, max_valu
 if st.button("Run Inference"):
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        results = model.predict(image, save=True, imgsz=640, conf=confidence_threshold)
+        results = model.predict(image, save=False, imgsz=640, conf=confidence_threshold)
         st.subheader("Detection Results")
         for i, r in enumerate(results):
             im_bgr = r.plot()
