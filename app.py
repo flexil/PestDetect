@@ -8,7 +8,7 @@ import time
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = YOLO("(link unavailable)")
+    model = YOLO("best.pt")
     return model
 
 model = load_model()
