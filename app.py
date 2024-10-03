@@ -9,6 +9,24 @@ def load_model(x):
     return model
 
 model = load_model('best.pt')
+class_names = {
+    0: "Aphids",
+    1: "Early Blight",
+    2: "Healthy Leaf",
+    3: "Leaf Curl",
+    4: "Leafhoppers and Jassids",
+    5: "Molds",
+    6: "Mosaic Virus",
+    7: "Septoria",
+    8: "Bacterial Canker",
+    9: "Bacterial Spot",
+    10: "Flea Beetle",
+    11: "Late Blight",
+    12: "Leafminer",
+    13: "Powdery Mildew",
+    14: "Yellow Curl Virus"
+}
+
 
 st.title("Pest Detection Model")
 st.subheader("Upload an image")
@@ -16,6 +34,10 @@ st.subheader("Upload an image")
 uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 confidence_threshold = st.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5)
 
+st.subheader("Model Detection Capabilities")
+for class_id, class_name in class_names.items():
+    st.write(f"{class_id}: {class_name}")
+    
 if st.button("Run Inference"):
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
