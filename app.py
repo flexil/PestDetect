@@ -74,7 +74,7 @@ if st.button("Run Inference"):
                 # Get the class name from the r.names dictionary
                 #class_name = r.names[class_id]
                 st.write(f"class id: {class_id}")
-                st.write(f"Class: {class_name}")
+                st.write(f"Disease Class Name: {class_name}")
     else:
         st.write("Please upload an image")
 
