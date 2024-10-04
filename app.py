@@ -64,17 +64,12 @@ if st.button("Run Inference"):
             st.image(im_rgb, caption=f"Detection {i+1}")
             for detection in r.boxes.xyxy:
                 x1, y1, x2, y2 = detection
-                st.write(f"Detection Box: ({x1}, {y1}, {x2}, {y2})")
-                # Get the class probabilities
-                probs = r.probs
-                # Find the index of the class with the highest probability
+       ##         st.write(f"Detection Box: ({x1}, {y1}, {x2}, {y2})")
                 class_id = r.boxes.cls
                 class_id = class_id.item()
                 class_name = class_names[class_id]
-                # Get the class name from the r.names dictionary
-                #class_name = r.names[class_id]
-                st.write(f"class id: {class_id}")
-                st.write(f"Disease Class Name: {class_name}")
+
+                st.write(f"Disease Name: {class_name}")
     else:
         st.write("Please upload an image")
 
