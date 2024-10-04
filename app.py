@@ -70,7 +70,8 @@ if st.button("Run Inference"):
                 # Find the index of the class with the highest probability
                 class_id = r.boxes.cls
                 # Get the class name from the r.names dictionary
-                class_name = r.names[class_id]
+                #class_name = r.names[class_id]
+                print("class id",class_id)
                 st.write(f"Class: {class_name}")
     else:
         st.write("Please upload an image")
