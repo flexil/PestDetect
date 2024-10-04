@@ -68,7 +68,7 @@ if st.button("Run Inference"):
                 # Get the class probabilities
                 probs = r.probs
                 # Find the index of the class with the highest probability
-                class_id = probs.argmax()
+                class_id = r.boxes.cls
                 # Get the class name from the r.names dictionary
                 class_name = r.names[class_id]
                 st.write(f"Class: {class_name}")
