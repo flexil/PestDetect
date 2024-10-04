@@ -65,9 +65,13 @@ if st.button("Run Inference"):
             for detection in r.boxes.xyxy:
                 x1, y1, x2, y2 = detection
                 st.write(f"Detection Box: ({x1}, {y1}, {x2}, {y2})")
-                # Get the class name from the class_names dictionary
-                class_id = int(r.classes[0])  # Assuming r.classes[0] gives the predicted class index
-                class_name = class_names[class_id]
+                # Get the class probabilities
+                probs = r.probs
+                # Find the index of the class with the highest probability
+                class_id = probs.argmax()
+                # Get the class name from the r.names dictionary
+                class_name = r.names[class_id]
                 st.write(f"Class: {class_name}")
     else:
         st.write("Please upload an image")
+
